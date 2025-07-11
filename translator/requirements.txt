@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+transformers
+sentencepiece
+httpx
+pydantic
+python-dotenv
