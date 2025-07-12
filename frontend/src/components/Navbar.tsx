@@ -1,26 +1,10 @@
 "use client";
 
 import { GraduationCap, Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useTheme } from "../components/ThemeProvider";
 
 export default function Navbar() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDarkMode = savedTheme === "dark" || (!savedTheme && prefersDark);
-
-    setIsDark(isDarkMode);
-    document.documentElement.classList.toggle("dark", isDarkMode);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    document.documentElement.classList.toggle("dark", newTheme);
-    localStorage.setItem("theme", newTheme ? "dark" : "light");
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-slate-200/50 dark:border-slate-700/50 sticky top-0 z-50 transition-colors duration-300">
@@ -46,7 +30,7 @@ export default function Navbar() {
               className="p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
               aria-label="Toggle theme"
             >
-              {isDark ? (
+              {theme === 'dark' ? (
                 <Sun className="w-5 h-5 text-yellow-500" />
               ) : (
                 <Moon className="w-5 h-5 text-slate-900" />
