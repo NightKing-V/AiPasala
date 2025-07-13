@@ -2,9 +2,11 @@
 
 import { GraduationCap, Moon, Sun } from "lucide-react";
 import { useTheme } from "../components/ThemeProvider";
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
+  const router = useRouter();
 
   return (
     <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-slate-200/50 dark:border-slate-700/50 sticky top-0 z-50 transition-colors duration-300">
@@ -20,7 +22,7 @@ export default function Navbar() {
           </div>
           <nav className="hidden md:flex space-x-8">
             <a href="#features" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">විශේෂාංග</a>
-            <a href="#subjects" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">විෂය</a>
+            <a href="#services" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">සේවාවන්</a>
             <a href="#about" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">අප ගැන</a>
             <a href="#contact" className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">සම්බන්ධතා</a>
           </nav>

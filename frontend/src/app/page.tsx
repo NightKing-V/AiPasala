@@ -1,8 +1,10 @@
 "use client";
 
 import { BookOpen, Brain, Users, MessageCircle, ChevronRight, Sparkles } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-900 transition-colors duration-300">
 
@@ -31,7 +33,7 @@ export default function Home() {
               <button className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all transform hover:scale-105 shadow-lg">
                 නොමිලේ ආරම්භ කරන්න
               </button>
-              <button className="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-600 flex items-center justify-center gap-2">
+              <button className="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-600 flex items-center justify-center gap-2" onClick={() => router.push('/chat')}>
                 <MessageCircle className="w-5 h-5" />
                 AI සමඟ කතාබහ කරන්න
               </button>
@@ -91,32 +93,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Subjects Section */}
-      <section id="subjects" className="py-20 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-indigo-900 transition-colors duration-300">
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-gradient-to-r from-slate-50 to-blue-50 dark:from-slate-800 dark:to-indigo-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h3 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-4">
-              ලබා ගත හැකි විෂයන්
+              AI සේවාවන්
             </h3>
             <p className="text-lg text-slate-600 dark:text-slate-300">
-              ශ්‍රී ලංකා අධ්‍යාපන ක්‍රමයට සරිලන සියලුම විෂයන්
+              ඔබගේ ඉගෙනුම් අවශ්‍යතා සඳහා විශේෂිත AI සේවාවන්
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'ගණිතය', icon: '📊', color: 'from-blue-500 to-blue-600' },
-              { name: 'විද්‍යාව', icon: '🧪', color: 'from-green-500 to-green-600' },
-              { name: 'ඉතිහාසය', icon: '📚', color: 'from-yellow-500 to-yellow-600' },
-              { name: 'භූගෝල විද්‍යාව', icon: '🌍', color: 'from-purple-500 to-purple-600' },
-              { name: 'ඉංග්‍රීසි', icon: '🗣️', color: 'from-red-500 to-red-600' },
-              { name: 'තාක්ෂණය', icon: '💻', color: 'from-indigo-500 to-indigo-600' }
-            ].map((subject, index) => (
-              <div key={index} className="group bg-white dark:bg-slate-800 rounded-2xl p-6 text-center hover:shadow-lg dark:hover:shadow-xl dark:hover:shadow-blue-500/10 transition-all cursor-pointer border border-slate-100 dark:border-slate-700">
-                <div className="text-3xl mb-4">{subject.icon}</div>
-                <h4 className="font-semibold text-slate-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                  {subject.name}
+              { 
+                name: 'Quiz Maker', 
+                icon: '📝', 
+                color: 'from-green-500 to-green-600',
+                description: 'ඔබගේ ප්‍රශ්න පත්‍රිකා ස්වයංක්‍රීයව සාදන්න'
+              },
+              { 
+                name: 'Note Maker', 
+                icon: '📋', 
+                color: 'from-yellow-500 to-yellow-600',
+                description: 'ප්‍රධාන කරුණු සාරාංශ කර සටහන් සාදන්න'
+              },
+              { 
+                name: 'Socratic Bot', 
+                icon: '🧠', 
+                color: 'from-purple-500 to-purple-600',
+                description: 'ප්‍රශ්න මගින් චින්තනය දියුණු කරන AI'
+              },
+              { 
+                name: 'Sahana Bot', 
+                icon: '💝', 
+                color: 'from-pink-500 to-pink-600',
+                description: 'චිත්තවේගීය සහාය සහ මානසික සෞඛ්‍යය'
+              },
+              { 
+                name: 'Text to Speech', 
+                icon: '🔊', 
+                color: 'from-red-500 to-red-600',
+                description: 'ලිඛිත කරුණු කථනයට පරිවර්තනය'
+              },
+              { 
+                name: 'Speech to Text', 
+                icon: '🎤', 
+                color: 'from-indigo-500 to-indigo-600',
+                description: 'කථනය ලිඛිත ආකාරයට පරිවර්තනය'
+              },
+              { 
+                name: 'Image Reading', 
+                icon: '🖼️', 
+                color: 'from-orange-500 to-orange-600',
+                description: 'පින්තූර සහ රූප විශ්ලේෂණය කර තේරුම් ගන්න'
+              },
+              { 
+                name: 'Document Reading', 
+                icon: '📄', 
+                color: 'from-teal-500 to-teal-600',
+                description: 'ලේඛන කියවා සාරාංශ සහ විශ්ලේෂණය කරන්න'
+              }
+            ].map((service, index) => (
+              <div key={index} className="group bg-white dark:bg-slate-800 rounded-2xl p-6 hover:shadow-lg dark:hover:shadow-xl dark:hover:shadow-blue-500/10 transition-all cursor-pointer border border-slate-100 dark:border-slate-700">
+                <div className="text-4xl mb-4">{service.icon}</div>
+                <h4 className="font-semibold text-slate-800 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-xl mb-3">
+                  {service.name}
                 </h4>
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                  {service.description}
+                </p>
               </div>
             ))}
           </div>

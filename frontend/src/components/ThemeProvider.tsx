@@ -16,9 +16,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    
-    // Check for saved theme preference or default to system preference
     const savedTheme = localStorage.getItem('theme') as Theme;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -27,6 +24,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     // Apply theme to document
     document.documentElement.classList.toggle('dark', initialTheme === 'dark');
+    
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
@@ -40,14 +39,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem('theme', newTheme);
   };
 
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      {mounted ? children : <div style={{ visibility: 'hidden' }}>{children}</div>}
     </ThemeContext.Provider>
   );
 }
