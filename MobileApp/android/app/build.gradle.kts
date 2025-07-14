@@ -8,7 +8,9 @@ plugins {
 android {
     namespace = "com.example.trans_data_creator"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "29.0.13113456"
+
+    sourceSets["main"].jniLibs.srcDirs("src/main/jniLibs")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
