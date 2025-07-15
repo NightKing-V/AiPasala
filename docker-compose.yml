@@ -29,6 +29,8 @@ services:
 
   agents:
     build: ./agents
+    volumes:
+      - ./agents:/app
     ports:
       - "5000:5000"
     networks:
