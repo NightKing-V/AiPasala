@@ -13,6 +13,9 @@ services:
 
   api-gateway:
     build: ./api-gateway
+    volumes:
+      - ./api-gateway:/app
+      # - /app/node_modules
     ports:
       - "4000:4000"
     networks:
